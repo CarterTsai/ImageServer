@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Test</title>
+</head>
+<style>
+    .box {
+        width: 100%;
+        text-align: center;
+    }
+</style>
+<body>
+<div class="box">
+    <h1>Image Reize with Picture Tag</h1>
+    <picture>
+        <source srcset="http://localhost:8080/image/test/320x480"
+                media="(min-width: 480px) and (max-width: 720px)">
+        <source srcset="http://localhost:8080/image/test/480x720"
+                media="(min-width: 720px)">
+        <img src="http://localhost:8080/image/test/300x250" />
+    </picture>
+</div>
+</body>
+</html>
