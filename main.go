@@ -62,6 +62,12 @@ func main() {
 
 	router.GET("/", Index)
 	router.GET("/image/:name/:size", ImageHandler)
-	fmt.Println("Listen 8080")
-	log.Fatal(http.ListenAndServe(":8080", router))
+	port := "8080"
+	if os.Getenv("PORT") != "" {
+		port = os.Getenv("PORT")
+	}
+	fmt.Println("Listen" + port)
+	if err := http.ListenAndServe(":"+port, router); err != nil {
+		log.Fatal(err)
+	}
 }
