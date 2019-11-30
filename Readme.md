@@ -1,10 +1,10 @@
 Image Server Example
 ====================
 
-bash```
+```bash
 $> go list -u -m all
 ```
 
-bash```
+```bash
 $> go run main.go
 ```
