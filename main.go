@@ -23,8 +23,9 @@ func Index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 		return
 	}
 
-	r.Header.Set("Content-Length", fmt.Sprint(fi.Size()))
-	r.Header.Set("Content-Type", "text/html; charset=utf-8")
+	w.Header().Set("Content-Length", fmt.Sprint(fi.Size()))
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+
 	if _, err = io.Copy(w, html); err != nil {
 		fmt.Fprintf(w, "Error %d", err)
 	}
@@ -48,8 +49,9 @@ func ImageHandler(w http.ResponseWriter, r *http.Request, ps httprouter.Params) 
 		return
 	}
 
-	r.Header.Set("Content-Length", fmt.Sprint(fi.Size()))
-	r.Header.Set("Content-Type", "image/png")
+	w.Header().Set("Cache-Control", "max-age=7776000")
+	w.Header().Set("Content-Length", fmt.Sprint(fi.Size()))
+	w.Header().Set("Content-Type", "image/png")
 
 	if _, err = io.Copy(w, reqImg); err != nil {
 		fmt.Fprintf(w, "Error %d", err)
